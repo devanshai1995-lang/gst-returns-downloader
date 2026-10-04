@@ -14,14 +14,15 @@
       </header>
 
       <div class="tabs">
-        <button class="tab-button active" data-tab="gst">GST Portal</button>
+        <button class="tab-button active" data-tab="gst">GST Returns</button>
+        <button class="tab-button" data-tab="reports">All Reports</button>
+        <button class="tab-button" data-tab="ledgers">Ledgers</button>
         <button class="tab-button" data-tab="services">Services</button>
         <button class="tab-button" data-tab="eway">eWay Bill</button>
         <button class="tab-button" data-tab="einvoice">e-Invoice</button>
-        <button class="tab-button" data-tab="bulk">Bulk</button>
       </div>
 
-      <!-- GST Tab -->
+      <!-- GST Returns Tab -->
       <div id="gst-tab" class="tab-content active">
         <form id="gst-form">
           <label>
@@ -32,12 +33,19 @@
           <label>
             Return Type
             <select id="returnType">
-              <option value="GSTR-1">GSTR-1</option>
-              <option value="GSTR-3B">GSTR-3B</option>
-              <option value="GSTR-9">GSTR-9</option>
-              <option value="GSTR-9C">GSTR-9C</option>
-              <option value="GSTR-2A">GSTR-2A</option>
-              <option value="GSTR-2B">GSTR-2B</option>
+              <option value="">-- Select Return --</option>
+              <option value="GSTR-1">GSTR-1 (Outward Supply)</option>
+              <option value="GSTR-2A">GSTR-2A (Inward Supply)</option>
+              <option value="GSTR-2B">GSTR-2B (ITC Eligibility)</option>
+              <option value="GSTR-3B">GSTR-3B (Monthly Return)</option>
+              <option value="GSTR-4">GSTR-4 (Composition)</option>
+              <option value="GSTR-5">GSTR-5 (Non-Resident)</option>
+              <option value="GSTR-6">GSTR-6 (Input Service Distributor)</option>
+              <option value="GSTR-7">GSTR-7 (E-commerce Operator)</option>
+              <option value="GSTR-8">GSTR-8 (E-commerce Supplier)</option>
+              <option value="GSTR-9">GSTR-9 (Annual Return)</option>
+              <option value="GSTR-9C">GSTR-9C (Reconciliation)</option>
+              <option value="GSTR-10">GSTR-10 (Final Return)</option>
             </select>
           </label>
 
@@ -48,6 +56,8 @@
               <option value="2025-26">2025-26</option>
               <option value="2023-24">2023-24</option>
               <option value="2022-23">2022-23</option>
+              <option value="2021-22">2021-22</option>
+              <option value="2020-21">2020-21</option>
             </select>
           </label>
 
@@ -77,6 +87,195 @@
         </form>
       </div>
 
+      <!-- All Reports Tab -->
+      <div id="reports-tab" class="tab-content">
+        <div class="portal-section">
+          <h3>Download All GST Reports</h3>
+          <p>Download all available reports month-wise or financial year-wise</p>
+          <div class="actions">
+            <button id="openGSTBtn2" type="button" class="secondary">Open Portal</button>
+          </div>
+        </div>
+
+        <div class="portal-section">
+          <label>
+            Filter By
+            <select id="reportFilterType">
+              <option value="monthly">Month Wise</option>
+              <option value="financial">Financial Year Wise</option>
+            </select>
+          </label>
+
+          <div id="report-filter-options">
+            <label id="report-month-label" style="display: none;">
+              Month
+              <select id="reportMonth">
+                <option value="">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </label>
+
+            <label id="report-year-label" style="display: none;">
+              Year
+              <select id="reportYear">
+                <option value="">Select Year</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+              </select>
+            </label>
+
+            <label id="report-fy-label">
+              Financial Year
+              <select id="reportFY">
+                <option value="">Select FY</option>
+                <option value="2024-25">2024-25</option>
+                <option value="2025-26">2025-26</option>
+                <option value="2023-24">2023-24</option>
+                <option value="2022-23">2022-23</option>
+                <option value="2021-22">2021-22</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="portal-section">
+          <h4>Available Report Categories</h4>
+          <div class="report-checklist">
+            <label><input type="checkbox" class="report-checkbox" value="returns" checked /> Returns (All Types)</label>
+            <label><input type="checkbox" class="report-checkbox" value="ledgers" checked /> Ledgers & Statements</label>
+            <label><input type="checkbox" class="report-checkbox" value="audit" checked /> Audit Reports</label>
+            <label><input type="checkbox" class="report-checkbox" value="documents" checked /> Supporting Documents</label>
+            <label><input type="checkbox" class="report-checkbox" value="invoices" checked /> Invoice Records</label>
+            <label><input type="checkbox" class="report-checkbox" value="amendments" checked /> Amendments & Revisions</label>
+            <label><input type="checkbox" class="report-checkbox" value="noc" checked /> NOCs & Certificates</label>
+            <label><input type="checkbox" class="report-checkbox" value="notices" checked /> Notices & Orders</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="downloadSelectedReportsOneByOne" type="button" class="secondary">Download One by One</button>
+          <button id="downloadSelectedReportsBulk" type="button">Download All Selected</button>
+        </div>
+      </div>
+
+      <!-- Ledgers Tab -->
+      <div id="ledgers-tab" class="tab-content">
+        <div class="portal-section">
+          <h3>GST Ledgers & Statements</h3>
+          <p>Download GST financial records and statements</p>
+          <div class="actions">
+            <button id="openGSTBtn3" type="button" class="secondary">Open Portal</button>
+          </div>
+        </div>
+
+        <div class="portal-section">
+          <label>
+            Select Ledger Type
+            <select id="ledgerType">
+              <option value="">-- Select Ledger --</option>
+              <option value="cash-ledger">Electronic Cash Ledger</option>
+              <option value="credit-ledger">Electronic Credit Ledger</option>
+              <option value="liability-register">Electronic Liability Register</option>
+              <option value="payment-demand">Payment towards Demand</option>
+              <option value="negative-liability-composition">Negative Liability - Composition</option>
+              <option value="credit-reversal">Credit Reversal & Reclaimed</option>
+              <option value="negative-liability-regular">Negative Liability - Regular</option>
+              <option value="rcm-liability">RCM Liability/ITC Statement</option>
+              <option value="input-credit">Input Credit Summary</option>
+              <option value="output-liability">Output Tax Liability</option>
+              <option value="tax-paid">Tax Paid Summary</option>
+              <option value="interest-penalty">Interest & Penalty</option>
+            </select>
+          </label>
+
+          <label>
+            Filter By
+            <select id="ledgerFilterType">
+              <option value="all">All (No Filter)</option>
+              <option value="monthly">Month Wise</option>
+              <option value="financial">Financial Year Wise</option>
+            </select>
+          </label>
+
+          <div id="ledger-filter-options" style="display: none;">
+            <label id="ledger-month-label" style="display: none;">
+              Month
+              <select id="ledgerMonth">
+                <option value="">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </label>
+
+            <label id="ledger-year-label" style="display: none;">
+              Year
+              <select id="ledgerYear">
+                <option value="">Select Year</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+              </select>
+            </label>
+
+            <label id="ledger-fy-label" style="display: none;">
+              Financial Year
+              <select id="ledgerFY">
+                <option value="">Select FY</option>
+                <option value="2024-25">2024-25</option>
+                <option value="2025-26">2025-26</option>
+                <option value="2023-24">2023-24</option>
+                <option value="2022-23">2022-23</option>
+                <option value="2021-22">2021-22</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="downloadLedgerBtn" type="button">Download Ledger</button>
+          </div>
+        </div>
+
+        <div class="ledger-list">
+          <h4>Ledger Types</h4>
+          <ul style="font-size: 12px; line-height: 1.6;">
+            <li><strong>Cash Ledger:</strong> Cash deposits and payments tracking</li>
+            <li><strong>Credit Ledger:</strong> ITC available and used</li>
+            <li><strong>Liability Register:</strong> Tax liability and payments</li>
+            <li><strong>Payment Record:</strong> Against demands and notices</li>
+            <li><strong>Negative Liability:</strong> For composition/regular taxpayers</li>
+            <li><strong>Credit Reversal:</strong> ITC reversals and reclaims</li>
+            <li><strong>RCM Details:</strong> Reverse charge mechanism records</li>
+            <li><strong>Tax Summaries:</strong> Input, output, and tax paid</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- User Services Tab -->
       <div id="services-tab" class="tab-content">
         <div class="portal-section">
@@ -87,7 +286,7 @@
         <div class="services-grid">
           <button class="service-link" data-service="saved-applications">
             <span class="icon">📋</span>
-            <span>My Saved Applications</span>
+            <span>Saved Applications</span>
           </button>
           <button class="service-link" data-service="my-applications">
             <span class="icon">📝</span>
@@ -95,27 +294,27 @@
           </button>
           <button class="service-link" data-service="submissions">
             <span class="icon">✓</span>
-            <span>View My Submissions</span>
+            <span>My Submissions</span>
           </button>
           <button class="service-link" data-service="notices">
             <span class="icon">📧</span>
-            <span>View Notices & Orders</span>
+            <span>Notices & Orders</span>
           </button>
           <button class="service-link" data-service="intimations">
             <span class="icon">⚠️</span>
-            <span>Notices/Intimations</span>
+            <span>Intimations</span>
           </button>
           <button class="service-link" data-service="certificates">
             <span class="icon">🏆</span>
-            <span>View Certificates</span>
+            <span>Certificates</span>
           </button>
           <button class="service-link" data-service="hsn-code">
             <span class="icon">🔍</span>
-            <span>Search HSN Code</span>
+            <span>HSN Code</span>
           </button>
           <button class="service-link" data-service="composition">
             <span class="icon">📊</span>
-            <span>Composition Status</span>
+            <span>Composition</span>
           </button>
           <button class="service-link" data-service="holiday-list">
             <span class="icon">📅</span>
@@ -127,11 +326,11 @@
           </button>
           <button class="service-link" data-service="gstp-locate">
             <span class="icon">👨‍⚖️</span>
-            <span>Locate GSTP</span>
+            <span>GSTP Locate</span>
           </button>
           <button class="service-link" data-service="gstp-manage">
             <span class="icon">⚙️</span>
-            <span>Engage/Disengage GSTP</span>
+            <span>GSTP Manage</span>
           </button>
           <button class="service-link" data-service="communication">
             <span class="icon">💬</span>
@@ -148,7 +347,7 @@
       <div id="eway-tab" class="tab-content">
         <div class="portal-section">
           <h3>eWay Bill Management</h3>
-          <p>Generate, manage, and download eWay bills</p>
+          <p>Generate and download eWay bills with flexible filtering</p>
           <div class="actions">
             <button id="openEwayBtn" type="button" class="secondary">Open Portal</button>
           </div>
@@ -160,15 +359,15 @@
           <div class="sub-section">
             <label>
               <input type="radio" name="eway-gen-type" value="single" checked />
-              Generate Single eWay Bill
+              Single Bill
             </label>
             <label>
               <input type="radio" name="eway-gen-type" value="bulk" />
-              Bulk Generate eWay Bills
+              Bulk Generate
             </label>
           </div>
           <div class="actions">
-            <button id="generateEwayBtn" type="button">Generate eWay Bills</button>
+            <button id="generateEwayBtn" type="button">Generate</button>
           </div>
         </div>
 
@@ -250,7 +449,7 @@
           </div>
 
           <div class="actions">
-            <button id="downloadEwayOneByOne" type="button" class="secondary">Download One by One</button>
+            <button id="downloadEwayOneByOne" type="button" class="secondary">One by One</button>
             <button id="downloadEwayBulk" type="button">Download All</button>
           </div>
         </div>
@@ -263,25 +462,13 @@
           <p>Download all e-invoices and reports</p>
           <div class="actions">
             <button id="openEinvoiceBtn" type="button" class="secondary">Open Portal</button>
-            <button id="downloadEinvoiceBtn" type="button">Download All Invoices</button>
+            <button id="downloadEinvoiceBtn" type="button">Download All</button>
           </div>
-        </div>
-      </div>
-
-      <!-- Bulk Download Tab -->
-      <div id="bulk-tab" class="tab-content">
-        <div class="portal-section">
-          <h3>Bulk Download All Documents</h3>
-          <p>Download from all portals where you're logged in</p>
-          <div class="actions">
-            <button id="bulkDownloadBtn" type="button">Start Bulk Download</button>
-          </div>
-          <div id="bulk-status" class="bulk-status"></div>
         </div>
       </div>
 
       <div id="status" class="status" aria-live="polite">
-        Ready. Log in to the portals and use the buttons above to download documents.
+        Ready. Log in to the portals and use the tabs above.
       </div>
     </div>
 
