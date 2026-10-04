@@ -1,20 +1,27 @@
 {
   "manifest_version": 3,
-  "name": "GST Returns Downloader",
-  "version": "1.0.0",
-  "description": "Download GST returns financial year-wise or monthly after login on the GST portal.",
+  "name": "GST & Compliance Portal Downloader",
+  "version": "1.1.0",
+  "description": "Download GST returns, eWay bills, e-Invoices, and all compliance documents from GST, eWay Bill, and e-Invoice portals.",
   "permissions": [
     "activeTab",
     "downloads",
     "storage",
     "scripting",
-    "tabs"
+    "tabs",
+    "webRequest"
   ],
   "host_permissions": [
     "https://*.gst.gov.in/*",
     "https://*.gstportal.gov.in/*",
     "https://gst.gov.in/*",
-    "https://services.gst.gov.in/*"
+    "https://services.gst.gov.in/*",
+    "https://*.ewaybill.nic.in/*",
+    "https://ewaybill.nic.in/*",
+    "https://*.einvoice.gov.in/*",
+    "https://einvoice.gov.in/*",
+    "https://*.einvoice1.nic.in/*",
+    "https://einvoice1.nic.in/*"
   ],
   "content_scripts": [
     {
@@ -22,7 +29,13 @@
         "https://*.gst.gov.in/*",
         "https://*.gstportal.gov.in/*",
         "https://gst.gov.in/*",
-        "https://services.gst.gov.in/*"
+        "https://services.gst.gov.in/*",
+        "https://*.ewaybill.nic.in/*",
+        "https://ewaybill.nic.in/*",
+        "https://*.einvoice.gov.in/*",
+        "https://einvoice.gov.in/*",
+        "https://*.einvoice1.nic.in/*",
+        "https://einvoice1.nic.in/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
@@ -32,7 +45,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "GST Returns Downloader",
+    "default_title": "GST & Compliance Portal Downloader",
     "default_popup": "popup.html"
   }
 }
