@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "GST Returns Downloader",
+  "version": "1.0.0",
+  "description": "Download GST returns financial year-wise or monthly after login on the GST portal.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.gst.gov.in/*",
+    "https://*.gstportal.gov.in/*",
+    "https://gst.gov.in/*",
+    "https://services.gst.gov.in/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.gst.gov.in/*",
+        "https://*.gstportal.gov.in/*",
+        "https://gst.gov.in/*",
+        "https://services.gst.gov.in/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "GST Returns Downloader",
+    "default_popup": "popup.html"
+  }
+}

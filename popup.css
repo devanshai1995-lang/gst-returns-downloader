@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.app {
+  width: 360px;
+  padding: 16px;
+}
+
+header h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  color: #0f172a;
+}
+
+#gst-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.25);
+  border-color: #3b82f6;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button[type="submit"] {
+  background: #0f766e;
+  color: white;
+  border-color: #0f766e;
+  flex: 1;
+}
+
+button.secondary {
+  background: white;
+  color: #334155;
+  flex: 1;
+}
+
+.status {
+  margin-top: 14px;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}

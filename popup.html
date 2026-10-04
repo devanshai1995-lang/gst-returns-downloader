@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GST Returns Downloader</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>GST Returns</h1>
+      </header>
+
+      <form id="gst-form">
+        <label>
+          GSTIN
+          <input id="gstin" type="text" maxlength="15" placeholder="22AAAAA0000A1Z5" required />
+        </label>
+
+        <label>
+          Return Type
+          <select id="returnType">
+            <option value="GSTR-1">GSTR-1</option>
+            <option value="GSTR-3B">GSTR-3B</option>
+            <option value="GSTR-9">GSTR-9</option>
+            <option value="GSTR-9C">GSTR-9C</option>
+            <option value="GSTR-2A">GSTR-2A</option>
+            <option value="GSTR-2B">GSTR-2B</option>
+          </select>
+        </label>
+
+        <label>
+          Financial Year
+          <select id="fiscalYear">
+            <option value="2024-25">2024-25</option>
+            <option value="2025-26">2025-26</option>
+            <option value="2023-24">2023-24</option>
+            <option value="2022-23">2022-23</option>
+          </select>
+        </label>
+
+        <label>
+          Month
+          <select id="month">
+            <option value="All">All Months</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </label>
+
+        <div class="actions">
+          <button id="openPortalBtn" type="button" class="secondary">Open GST Portal</button>
+          <button id="downloadBtn" type="submit">Download Returns</button>
+        </div>
+      </form>
+
+      <div id="status" class="status" aria-live="polite">
+        Ready. Open the GST portal and log in.
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
