@@ -3,70 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GST Returns Downloader</title>
+    <title>GST & Compliance Portal Downloader</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <div class="app">
       <header>
-        <h1>GST Returns</h1>
+        <h1>Compliance Downloader</h1>
+        <p class="subtitle">GST | eWay Bill | e-Invoice</p>
       </header>
 
-      <form id="gst-form">
-        <label>
-          GSTIN
-          <input id="gstin" type="text" maxlength="15" placeholder="22AAAAA0000A1Z5" required />
-        </label>
+      <div class="tabs">
+        <button class="tab-button active" data-tab="gst">GST Portal</button>
+        <button class="tab-button" data-tab="eway">eWay Bill</button>
+        <button class="tab-button" data-tab="einvoice">e-Invoice</button>
+        <button class="tab-button" data-tab="bulk">Bulk Download</button>
+      </div>
 
-        <label>
-          Return Type
-          <select id="returnType">
-            <option value="GSTR-1">GSTR-1</option>
-            <option value="GSTR-3B">GSTR-3B</option>
-            <option value="GSTR-9">GSTR-9</option>
-            <option value="GSTR-9C">GSTR-9C</option>
-            <option value="GSTR-2A">GSTR-2A</option>
-            <option value="GSTR-2B">GSTR-2B</option>
-          </select>
-        </label>
+      <!-- GST Tab -->
+      <div id="gst-tab" class="tab-content active">
+        <form id="gst-form">
+          <label>
+            GSTIN
+            <input id="gstin" type="text" maxlength="15" placeholder="22AAAAA0000A1Z5" />
+          </label>
 
-        <label>
-          Financial Year
-          <select id="fiscalYear">
-            <option value="2024-25">2024-25</option>
-            <option value="2025-26">2025-26</option>
-            <option value="2023-24">2023-24</option>
-            <option value="2022-23">2022-23</option>
-          </select>
-        </label>
+          <label>
+            Return Type
+            <select id="returnType">
+              <option value="GSTR-1">GSTR-1</option>
+              <option value="GSTR-3B">GSTR-3B</option>
+              <option value="GSTR-9">GSTR-9</option>
+              <option value="GSTR-9C">GSTR-9C</option>
+              <option value="GSTR-2A">GSTR-2A</option>
+              <option value="GSTR-2B">GSTR-2B</option>
+            </select>
+          </label>
 
-        <label>
-          Month
-          <select id="month">
-            <option value="All">All Months</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-        </label>
+          <label>
+            Financial Year
+            <select id="fiscalYear">
+              <option value="2024-25">2024-25</option>
+              <option value="2025-26">2025-26</option>
+              <option value="2023-24">2023-24</option>
+              <option value="2022-23">2022-23</option>
+            </select>
+          </label>
 
-        <div class="actions">
-          <button id="openPortalBtn" type="button" class="secondary">Open GST Portal</button>
-          <button id="downloadBtn" type="submit">Download Returns</button>
+          <label>
+            Month
+            <select id="month">
+              <option value="All">All Months</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button id="openGSTBtn" type="button" class="secondary">Open Portal</button>
+            <button id="downloadGSTBtn" type="submit">Download Returns</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- eWay Bill Tab -->
+      <div id="eway-tab" class="tab-content">
+        <div class="portal-section">
+          <h3>eWay Bill Portal</h3>
+          <p>Download all eWay bills and related documents</p>
+          <div class="actions">
+            <button id="openEwayBtn" type="button" class="secondary">Open Portal</button>
+            <button id="downloadEwayBtn" type="button">Download All Bills</button>
+          </div>
         </div>
-      </form>
+      </div>
+
+      <!-- e-Invoice Tab -->
+      <div id="einvoice-tab" class="tab-content">
+        <div class="portal-section">
+          <h3>e-Invoice Portal</h3>
+          <p>Download all e-invoices and reports</p>
+          <div class="actions">
+            <button id="openEinvoiceBtn" type="button" class="secondary">Open Portal</button>
+            <button id="downloadEinvoiceBtn" type="button">Download All Invoices</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bulk Download Tab -->
+      <div id="bulk-tab" class="tab-content">
+        <div class="portal-section">
+          <h3>Bulk Download All Documents</h3>
+          <p>Download from all portals where you're logged in</p>
+          <div class="actions">
+            <button id="bulkDownloadBtn" type="button">Start Bulk Download</button>
+          </div>
+          <div id="bulk-status" class="bulk-status"></div>
+        </div>
+      </div>
 
       <div id="status" class="status" aria-live="polite">
-        Ready. Open the GST portal and log in.
+        Ready. Log in to the portals and use the buttons above to download documents.
       </div>
     </div>
 
