@@ -10,27 +10,73 @@ body {
 }
 
 .app {
-  width: 360px;
-  padding: 16px;
+  width: 400px;
+  padding: 14px;
+}
+
+header {
+  margin-bottom: 12px;
 }
 
 header h1 {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 22px;
   color: #0f172a;
 }
 
-#gst-form {
+.subtitle {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.tab-button {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #334155;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab-button.active {
+  background: #0f766e;
+  color: #ffffff;
+  border-color: #0f766e;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#gst-form,
+.portal-section,
+.services-grid,
+.ledger-list,
+.einvoice-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 label {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -39,14 +85,44 @@ select,
 button {
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
-  font-size: 14px;
+  padding: 9px 10px;
+  font-size: 13px;
 }
 
 input:focus,
 select:focus {
-  outline: 2px solid rgba(59, 130, 246, 0.25);
+  outline: 2px solid rgba(59, 130, 246, 0.2);
   border-color: #3b82f6;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button[type="submit"],
+#downloadGSTBtn,
+#downloadEwayBulk,
+#downloadEinvoiceBulk,
+#generateEwayBtn,
+#generateEinvoiceBtn,
+#downloadLedgerBtn,
+#bulkDownloadBtn,
+#downloadEwayOneByOne,
+#downloadEinvoiceOneByOne {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: white;
+  flex: 1;
+}
+
+button.secondary {
+  background: white;
+  color: #334155;
 }
 
 .actions {
@@ -55,27 +131,53 @@ select:focus {
   margin-top: 6px;
 }
 
-button {
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform 0.15s ease;
+.portal-section,
+.ledger-list,
+.einvoice-info {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
 }
 
-button:hover {
-  transform: translateY(-1px);
+.portal-section h3,
+.portal-section h4,
+.ledger-list h4,
+.einvoice-info h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #0f172a;
 }
 
-button[type="submit"] {
-  background: #0f766e;
-  color: white;
-  border-color: #0f766e;
-  flex: 1;
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-button.secondary {
-  background: white;
-  color: #334155;
-  flex: 1;
+.service-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.service-link .icon {
+  font-size: 16px;
+}
+
+.sub-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
 }
 
 .status {
@@ -85,6 +187,38 @@ button.secondary {
   color: #0f172a;
   border-radius: 8px;
   padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.bulk-status {
+  display: none;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.bulk-status.active {
+  display: block;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.status-item .icon {
+  font-size: 14px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
   font-size: 12px;
   line-height: 1.5;
 }
