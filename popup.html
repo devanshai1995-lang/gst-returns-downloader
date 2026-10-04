@@ -147,11 +147,111 @@
       <!-- eWay Bill Tab -->
       <div id="eway-tab" class="tab-content">
         <div class="portal-section">
-          <h3>eWay Bill Portal</h3>
-          <p>Download all eWay bills and related documents</p>
+          <h3>eWay Bill Management</h3>
+          <p>Generate, manage, and download eWay bills</p>
           <div class="actions">
             <button id="openEwayBtn" type="button" class="secondary">Open Portal</button>
-            <button id="downloadEwayBtn" type="button">Download All Bills</button>
+          </div>
+        </div>
+
+        <!-- eWay Bill Generation -->
+        <div class="portal-section">
+          <h3>Generate eWay Bills</h3>
+          <div class="sub-section">
+            <label>
+              <input type="radio" name="eway-gen-type" value="single" checked />
+              Generate Single eWay Bill
+            </label>
+            <label>
+              <input type="radio" name="eway-gen-type" value="bulk" />
+              Bulk Generate eWay Bills
+            </label>
+          </div>
+          <div class="actions">
+            <button id="generateEwayBtn" type="button">Generate eWay Bills</button>
+          </div>
+        </div>
+
+        <!-- eWay Bill Download -->
+        <div class="portal-section">
+          <h3>Download eWay Bill Reports</h3>
+          
+          <label>
+            Report Type
+            <select id="ewayReportType">
+              <option value="all">All eWay Bills</option>
+              <option value="pending">Pending Bills</option>
+              <option value="cancelled">Cancelled Bills</option>
+              <option value="overdue">Overdue Bills</option>
+            </select>
+          </label>
+
+          <label>
+            Filter By
+            <select id="ewayFilterType">
+              <option value="all">All (No Filter)</option>
+              <option value="monthly">Month Wise</option>
+              <option value="financial">Financial Year Wise</option>
+              <option value="date-range">Date Range</option>
+            </select>
+          </label>
+
+          <div id="eway-filter-options" style="display: none;">
+            <label id="eway-month-label" style="display: none;">
+              Month
+              <select id="ewayMonth">
+                <option value="">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </label>
+
+            <label id="eway-year-label" style="display: none;">
+              Year
+              <select id="ewayYear">
+                <option value="">Select Year</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+              </select>
+            </label>
+
+            <label id="eway-fy-label" style="display: none;">
+              Financial Year
+              <select id="ewayFY">
+                <option value="">Select FY</option>
+                <option value="2024-25">2024-25</option>
+                <option value="2025-26">2025-26</option>
+                <option value="2023-24">2023-24</option>
+                <option value="2022-23">2022-23</option>
+              </select>
+            </label>
+
+            <label id="eway-from-date-label" style="display: none;">
+              From Date
+              <input type="date" id="ewayFromDate" />
+            </label>
+
+            <label id="eway-to-date-label" style="display: none;">
+              To Date
+              <input type="date" id="ewayToDate" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="downloadEwayOneByOne" type="button" class="secondary">Download One by One</button>
+            <button id="downloadEwayBulk" type="button">Download All</button>
           </div>
         </div>
       </div>
